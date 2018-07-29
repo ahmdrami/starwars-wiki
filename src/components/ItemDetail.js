@@ -1,4 +1,6 @@
 import React from 'react';
+import ItemContainer from './ItemContainer';
+import Colors from './Color';
 
 
 const ItemDetail = ({ item, path }) => {
@@ -13,10 +15,12 @@ const ItemDetail = ({ item, path }) => {
                {Object.keys(item)
                .filter(filterKey => filterKey !== 'name' )
                .map((itemKey, i) => (
-                  <div className="item-container" key={i}>
-                     <label> {itemKey} </label>
-                     <span> {item[itemKey]} </span>
-                  </div>
+                     
+                  (itemKey.indexOf('color') > -1) ? (
+                     <Colors key={i} colors={ item[itemKey]} label={itemKey}/>
+                  ) : (
+                     <ItemContainer key={i} content={item[itemKey]} label={itemKey}/>
+                  )
                ))}
             </section>
          )}

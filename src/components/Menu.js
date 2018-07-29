@@ -1,11 +1,12 @@
 import React from 'react';
 import arrowLeft from '../assets/arrow-left.svg';
+import Spinner from './Spinner';
 const Menu = ({ isFetching, menu, onClick }) => {
    const root = Array.isArray(menu);
    return (
       <aside>
          { isFetching ? (
-            <h2> Loading ... </h2>
+             <Spinner />
          ) : !root ? (
             Object.keys(menu).map((link, i) => (
                <button className="button" key={i} onClick={() => onClick(link)}>
@@ -26,6 +27,8 @@ const Menu = ({ isFetching, menu, onClick }) => {
                      {link.name ? link.name : link.title}
                   </button>
                ))}
+
+              
             </div>
          )}
       </aside>

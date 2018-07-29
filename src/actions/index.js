@@ -45,7 +45,6 @@ const shouldFetchData = (state, path = 'path') => {
 };
 
 export const fetchDataIfNeeded = path => (dispatch, getState) => {
-   // console.log(path, getState())
    if (shouldFetchData(getState(), path)) {
      return dispatch(fetchData(path))
    }

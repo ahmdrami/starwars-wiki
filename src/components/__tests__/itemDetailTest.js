@@ -3,6 +3,8 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow } from 'enzyme';
 import ItemDetail from '../ItemDetail';
+import ItemContainer from '../ItemContainer';
+import Colors from '../Color';
 
 configure({ adapter: new Adapter() });
 const testProps = {
@@ -17,14 +19,16 @@ describe('ItemDetail Component', () => {
 
    });
 
-   it('Should create 2 item containers and do not include the name', () => {
+   it('Should create 2 ItemContainer component and one Color Component', () => {
       testProps.item = {
          name: 'Test',
          age: '44',
-         height: '6'
+         height: '6',
+         colors: 'red,blue'
       }
       const wrapper = shallow(<ItemDetail {...testProps} />);
-      expect(wrapper.find('.item-container').length).toBe(2);
+      expect(wrapper.find(ItemContainer).length).toBe(2);
+      expect(wrapper.find(Colors).length).toBe(1);
 
    });
 

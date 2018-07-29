@@ -23,12 +23,11 @@ class App extends Component {
 
    componentDidMount() {
       const { dispatch } = this.props;
-      // console.log(this.props);
       dispatch(fetchDataIfNeeded());
    }
 
    componentWillReceiveProps(nextProps) {
-      console.log(nextProps, 'nextProps');
+
       if (nextProps.path !== this.props.path) {
          const { dispatch, path } = nextProps;
          dispatch(fetchDataIfNeeded(path));
@@ -57,11 +56,11 @@ class App extends Component {
    };
    render() {
       const { appState, selectedPath, isFetching } = this.props;
-      console.log(appState.paths);
+
       return (
          <div>
             { !appState.paths ? (
-               <h2>Loading...</h2> // show spinner here
+               <h2>Loading...</h2> 
             ) : (
                <div className="body">
                   <Menu
